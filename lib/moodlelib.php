@@ -9119,6 +9119,10 @@ function get_performance_info() {
     $info['html'] .= '<li class="timeused col-sm-4">'.$info['realtime'].' secs</li> ';
     $info['txt'] .= 'time: '.$info['realtime'].'s ';
 
+    if (!empty($PERF->sessionlocktime)) {
+        $info['txt'] .= 'session lock time: ' . sprintf("%.5f", $PERF->sessionlocktime) . 's ';
+    }
+
     if (function_exists('memory_get_usage')) {
         $info['memory_total'] = memory_get_usage();
         $info['memory_growth'] = memory_get_usage() - $PERF->startmemory;
