@@ -339,7 +339,8 @@ abstract class core_filetypes {
         // If there are no custom types, just return.
         $custom = self::get_custom_types();
         if (empty($custom)) {
-            return $mimetypes;
+            self::$cachedtypes = $mimetypes;
+            return self::$cachedtypes;
         }
 
         // Check value is an array.
