@@ -63,7 +63,7 @@ preferences,moodle|/user/preferences.php|preferences',
     $title = get_string('logo', 'admin');
     $description = get_string('logo_desc', 'admin');
     $setting = new admin_setting_configstoredfile('core_admin/logo', $title, $description, 'logo', 0,
-        ['maxfiles' => 1, 'accepted_types' => ['.jpg', '.png']]);
+        ['maxfiles' => 1, 'accepted_types' => ['.jpg', '.png', '.gif', '.svg']]);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
@@ -71,7 +71,7 @@ preferences,moodle|/user/preferences.php|preferences',
     $title = get_string('logocompact', 'admin');
     $description = get_string('logocompact_desc', 'admin');
     $setting = new admin_setting_configstoredfile('core_admin/logocompact', $title, $description, 'logocompact', 0,
-        ['maxfiles' => 1, 'accepted_types' => ['.jpg', '.png']]);
+        ['maxfiles' => 1, 'accepted_types' => ['.jpg', '.png', '.gif', '.svg']]);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $temp->add($setting);
 
