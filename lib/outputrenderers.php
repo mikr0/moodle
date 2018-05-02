@@ -1301,17 +1301,16 @@ class core_renderer extends renderer_base {
 
         // Provide some performance info if required
         $performanceinfo = '';
-        if (defined('MDL_PERF') || (!empty($CFG->perfdebug) and $CFG->perfdebug > 7)) {
+        if ($CFG->perfdebugdisplay || $CFG->perfdebuglog) {
             $perf = get_performance_info();
-            if (defined('MDL_PERFTOFOOT') || debugging() || $CFG->perfdebug > 7) {
+            if ($CFG->perfdebugdisplay) {
                 $performanceinfo = $perf['html'];
+            }
+            if ($CFG->perfdebuglog) {
+                error_log("PERF: " . $perf['txt']);
             }
         }
 
-        // We always want performance data when running a performance test, even if the user is redirected to another page.
-        if (MDL_PERF_TEST && strpos($footer, $this->unique_performance_info_token) === false) {
-            $footer = $this->unique_performance_info_token . $footer;
-        }
         $footer = str_replace($this->unique_performance_info_token, $performanceinfo, $footer);
 
         // Only show notifications when we have a $PAGE context id.

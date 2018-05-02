@@ -132,32 +132,12 @@ class core_shutdown_manager {
         }
 
         // Deal with perf logging.
-        if (defined('MDL_PERF') || (!empty($CFG->perfdebug) and $CFG->perfdebug > 7)) {
+        if ($CFG->perfdebuglog) {
             if ($apachereleasemem) {
                 error_log('Mem usage over '.$apachereleasemem.': marking Apache child for reaping.');
             }
-            if (defined('MDL_PERFTOLOG')) {
-                $perf = get_performance_info();
-                error_log("PERF: " . $perf['txt']);
-            }
-            if (defined('MDL_PERFINC')) {
-                $inc = get_included_files();
-                $ts  = 0;
-                foreach ($inc as $f) {
-                    if (preg_match(':^/:', $f)) {
-                        $fs = filesize($f);
-                        $ts += $fs;
-                        $hfs = display_size($fs);
-                        error_log(substr($f, strlen($CFG->dirroot)) . " size: $fs ($hfs)", null, null, 0);
-                    } else {
-                        error_log($f , null, null, 0);
-                    }
-                }
-                if ($ts > 0 ) {
-                    $hts = display_size($ts);
-                    error_log("Total size of files included: $ts ($hts)");
-                }
-            }
+            $perf = get_performance_info();
+            error_log("PERF: " . $perf['txt']);
         }
     }
 }

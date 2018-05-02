@@ -2051,11 +2051,6 @@ width: 80%; -moz-border-radius: 20px; padding: 15px">
             $htmllang = '';
         }
 
-        $footer = '';
-        if (MDL_PERF_TEST) {
-            $perfinfo = get_performance_info();
-            $footer = '<footer>' . $perfinfo['html'] . '</footer>';
-        }
 
         return '<!DOCTYPE html>
 <html ' . $htmllang . '>
@@ -2063,6 +2058,6 @@ width: 80%; -moz-border-radius: 20px; padding: 15px">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 '.$meta.'
 <title>' . $title . '</title>
-</head><body>' . $content . $footer . '</body></html>';
+</head><body>' . $content . '</body></html>';
     }
 }

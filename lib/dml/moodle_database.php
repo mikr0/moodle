@@ -511,7 +511,7 @@ abstract class moodle_database {
 
         $time = $this->query_time();
 
-        // Will be shown or not depending on MDL_PERF values rather than in dboptions['log*].
+        // Will be shown or not depending on perfdebugdisplay/perfdebuglog values rather than in dboptions['log*].
         $this->queriestime = $this->queriestime + $time;
 
         if ($logall or ($logslow and ($logslow < ($time+0.00001))) or ($iserror and $logerrors)) {

@@ -361,18 +361,6 @@ $CFG->admin = 'admin';
 //   With these settings you get more granular control over the capture
 //   and printout of the data
 //
-//   Capture performance profiling data
-//   define('MDL_PERF'  , true);
-//
-//   Capture additional data from DB
-//   define('MDL_PERFDB'  , true);
-//
-//   Print to log (for passive profiling of production servers)
-//   define('MDL_PERFTOLOG'  , true);
-//
-//   Print to footer (works with the default theme)
-//   define('MDL_PERFTOFOOT', true);
-//
 //   Enable earlier profiling that causes more code to be covered
 //   on every request (db connections, config load, other inits...).
 //   Requires extra configuration to be defined in config.php like:
